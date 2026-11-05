@@ -2,5 +2,14 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <title>Ari Cohen</title>
-<style>body{background:#000000;color:#ffffff}</style>
+<style>
+body{background:#000000;color:#ffffff}
+p{display:inline-block;font-size:2rem;animation:flash 1s infinite;text-shadow:0 0 6px currentColor,0 0 16px currentColor}
+@keyframes flash{50%{color:#ff4fb8}}
+.s{position:fixed;color:#ffffff;pointer-events:none;animation:tw 1s forwards}
+@keyframes tw{0%{transform:scale(0)}50%{transform:scale(1) rotate(90deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
+</style>
+<script>
+setInterval(function(){var t=document.querySelector('p');if(!t)return;var r=t.getBoundingClientRect(),s=document.createElement('span');s.className='s';s.textContent='\u2726';s.style.left=r.left+Math.random()*r.width+'px';s.style.top=r.top+Math.random()*r.height+'px';document.body.appendChild(s);setTimeout(function(){s.remove()},1000)},120);
+</script>
 <p>CARR IS GAY</p>
