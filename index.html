@@ -352,7 +352,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
     <div class="out" id="gn-out" hidden>
       <p class="lead">Your gummy name is</p>
       <p class="name" id="gn-name"></p>
-      <svg class="bear" viewBox="0 0 64 80" aria-hidden="true">
+      <svg class="bear" id="gn-bear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" aria-hidden="true">
         <defs><linearGradient id="gn-grad" x1="0" y1="0" x2="0" y2="1"></linearGradient></defs>
         <g fill="url(#gn-grad)">
           <circle cx="18" cy="11" r="7.5"/><circle cx="46" cy="11" r="7.5"/>
@@ -368,9 +368,11 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
         <path d="M21 13 q4 -5 10 -4" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.55"/>
       </svg>
       <div class="row">
-        <button type="button" class="go" id="gn-again">Try another</button>
+        <button type="button" class="go" id="gn-share">Share</button>
+        <button type="button" class="ghost" id="gn-again">Try another</button>
         <button type="button" class="ghost" id="gn-close">Close</button>
       </div>
+      <p class="lead" id="gn-note" role="status" style="font-size:0.875rem;min-height:1.3em"></p>
     </div>
   </div>
 </div>
@@ -406,7 +408,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
   }
   var $ = function (id) { return document.getElementById(id); };
   var box = $('gn'), form = $('gn-form'), out = $('gn-out'), opener = null;
-  function reset() { form.hidden = false; out.hidden = true; $('gn-err').textContent = ''; $('gn-initial').value = ''; $('gn-month').value = ''; $('gn-initial').focus(); }
+  function reset() { form.hidden = false; out.hidden = true; $('gn-err').textContent = ''; $('gn-note').textContent = ''; $('gn-initial').value = ''; $('gn-month').value = ''; $('gn-initial').focus(); }
   function close() { box.hidden = true; if (opener) opener.focus(); }
   $('gn-open').addEventListener('click', function () { opener = this; box.hidden = false; reset(); });
   form.addEventListener('submit', function (e) {
@@ -417,6 +419,60 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
     $('gn-name').textContent = FIRST[letter] + ' ' + LAST[+month];
     paintBear();
     form.hidden = true; out.hidden = false; $('gn-again').focus();
+  });
+  function wrap(ctx, text, maxW) {
+    var words = text.split(' '), lines = [], line = '';
+    words.forEach(function (w) {
+      var t = line ? line + ' ' + w : w;
+      if (line && ctx.measureText(t).width > maxW) { lines.push(line); line = w; } else line = t;
+    });
+    lines.push(line); return lines;
+  }
+  function makeCard(name) {
+    var W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+    var x = c.getContext('2d');
+    x.fillStyle = '#10291f'; x.fillRect(0, 0, W, H);
+    x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+    x.fillStyle = '#8fdc7a'; x.font = '600 58px "Barlow Condensed", "Arial Narrow", Arial, sans-serif';
+    x.fillText('MY GUMMY NAME IS', W / 2, 170);
+    var size = 160, lines, lh;
+    while (true) {
+      x.font = size + 'px "Chewy", "Comic Sans MS", sans-serif'; lines = wrap(x, name, 940); lh = size * 1.1;
+      var fits = lines.length * lh <= 450 && lines.every(function (l) { return x.measureText(l).width <= 940; });
+      if (fits || size <= 60) break; size -= 6;
+    }
+    var top = 240 + (450 - lines.length * lh) / 2;
+    x.fillStyle = '#ff6b9d';
+    lines.forEach(function (l, i) { x.fillText(l, W / 2, top + size * 0.82 + i * lh); });
+    x.fillStyle = '#ffffff'; x.font = '600 54px "Barlow Condensed", "Arial Narrow", Arial, sans-serif';
+    x.fillText('GET YOURS AT ARICOHEN.CA', W / 2, H - 90);
+    var svg = new XMLSerializer().serializeToString($('gn-bear'));
+    return new Promise(function (resolve) {
+      var img = new Image();
+      img.onload = function () { x.drawImage(img, W / 2 - 170, 745, 340, 425); resolve(c); };
+      img.onerror = function () { resolve(c); };
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    });
+  }
+  function saveFile(blob) {
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'my-gummy-name.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    $('gn-note').textContent = 'Picture saved. Post it wherever you like.';
+  }
+  $('gn-share').addEventListener('click', function () {
+    var name = $('gn-name').textContent, note = $('gn-note');
+    note.textContent = '';
+    var fonts = document.fonts && document.fonts.load ? Promise.all([document.fonts.load('170px "Chewy"'), document.fonts.load('600 58px "Barlow Condensed"')]).catch(function () {}) : Promise.resolve();
+    fonts.then(function () { return makeCard(name); }).then(function (c) {
+      c.toBlob(function (blob) {
+        if (!blob) { note.textContent = 'Could not make the picture on this device.'; return; }
+        var file = new File([blob], 'my-gummy-name.png', { type: 'image/png' });
+        var data = { files: [file], title: 'My gummy name', text: 'My gummy name is ' + name + '. Get yours at aricohen.ca' };
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share(data).catch(function (err) { if (err && err.name !== 'AbortError') saveFile(blob); });
+        } else saveFile(blob);
+      }, 'image/png');
+    });
   });
   $('gn-again').addEventListener('click', reset);
   $('gn-close').addEventListener('click', close);
