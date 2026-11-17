@@ -1,15 +1,302 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex">
-<title>Ari Cohen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ari Cohen | Confectionery and Gummy Consultant, Toronto</title>
+<meta name="description" content="Ari Cohen is a confectionery and gummy consultant in Toronto. Gelatin and pectin gummy and soft chew formulation for the cannabis and supplement industries, on-site and remote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
 <style>
-body{background:#000000;color:#ffffff}
-p{display:inline-block;font-size:2rem;animation:flash 1s infinite;text-shadow:0 0 6px currentColor,0 0 16px currentColor}
-@keyframes flash{50%{color:#ff4fb8}}
-.s{position:fixed;color:#ffffff;pointer-events:none;animation:tw 1s forwards}
-@keyframes tw{0%{transform:scale(0)}50%{transform:scale(1) rotate(90deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
+/* Layout: deep green header band, white body in a label-left / content-right grid, grey-green bands for facts and footer. Single light look by choice. */
+:root {
+  --deep: #10291f;
+  --deep-2: #1a3a2c;
+  --accent: #1c7d46;
+  --accent-on-deep: #8fdc7a;
+  --ink: #16201b;
+  --mute: #55625b;
+  --band: #f0f4f1;
+  --line: #d9e0db;
+  --paper: #ffffff;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.6 var(--body); }
+h1, h2, h3, p, ul, figure, dl, dd { margin: 0; padding: 0; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: 0.18em; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.inner { max-width: 1040px; margin-inline: auto; padding-inline: 24px; }
+
+/* Header band */
+.top { background: var(--deep); color: #fff; }
+.bar { display: flex; justify-content: space-between; align-items: center; padding-block: 16px; font-size: 0.875rem; }
+.bar .site { font: 700 1.125rem/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; }
+.member {
+  border: 1px solid rgba(255,255,255,0.35); border-radius: 4px; padding: 7px 12px;
+  text-decoration: none; line-height: 1; color: #fff;
+}
+.member:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 40px; align-items: center; padding-block: 44px 56px; }
+h1 { font: 700 clamp(3.4rem, 10vw, 5.75rem)/0.95 var(--display); letter-spacing: 0; text-transform: uppercase; }
+.role { font: 600 clamp(1.5rem, 3.4vw, 2rem)/1.2 var(--display); letter-spacing: 0.01em; color: var(--accent-on-deep); padding-top: 12px; }
+.lede { padding-top: 18px; max-width: 34rem; color: rgba(255,255,255,0.86); }
+.cta { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; padding-top: 24px; font-size: 0.9375rem; }
+.btn {
+  background: var(--accent-on-deep); color: var(--deep); font-weight: 600; text-decoration: none;
+  padding: 11px 18px; border-radius: 4px; line-height: 1.2; overflow-wrap: anywhere;
+}
+.btn:hover { background: #fff; }
+.hero img { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 3px solid var(--deep-2); }
+
+/* Facts band */
+.facts { background: var(--band); border-bottom: 1px solid var(--line); }
+.facts dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.facts div { padding: 22px 20px 22px 0; }
+.facts div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.facts dt { font: 700 1.625rem/1.1 var(--display); text-transform: uppercase; color: var(--accent); }
+.facts dd { color: var(--mute); font-size: 0.9375rem; padding-top: 4px; }
+
+/* Sections */
+.sec { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px 48px; padding-block: 48px; border-bottom: 1px solid var(--line); }
+h2 { font: 700 1.75rem/1.1 var(--display); letter-spacing: 0.01em; text-transform: uppercase; text-wrap: balance; }
+h2::before { content: ""; display: block; width: 36px; height: 4px; background: var(--accent); margin-bottom: 14px; }
+.body { display: grid; gap: 14px; max-width: 40rem; }
+.wide { max-width: none; }
+
+.services { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; max-width: none; }
+.services li { padding: 11px 0; border-top: 1px solid var(--line); }
+.services li:nth-child(-n+2) { border-top: 0; padding-top: 0; }
+
+.job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 24px; padding-top: 14px; border-top: 1px solid var(--line); }
+.job h3 { font: 600 1.0625rem/1.4 var(--body); }
+.job .when { color: var(--mute); font-size: 0.9375rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.job p { grid-column: 1 / -1; color: var(--mute); }
+
+.photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 14px; }
+.photos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; }
+.photos .triangle img { object-position: 50% 12%; }
+figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
+
+.tool { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 18px 20px; display: grid; gap: 6px; }
+.tool a { font-weight: 600; color: var(--accent); }
+
+/* Footer band */
+.foot { background: var(--deep); color: #fff; }
+.foot .inner { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px 48px; padding-block: 44px; }
+.foot h2::before { background: var(--accent-on-deep); }
+.contact { display: grid; gap: 10px; max-width: 36rem; }
+.contact form { display: grid; gap: 14px; padding-bottom: 10px; }
+.contact label { display: grid; gap: 6px; font-size: 0.875rem; color: rgba(255,255,255,0.75); }
+.contact input, .contact textarea {
+  font: inherit; font-size: 1rem; color: #fff; background: var(--deep-2);
+  border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; padding: 10px 12px; width: 100%;
+}
+.contact textarea { resize: vertical; min-height: 7.5rem; }
+.contact input:focus, .contact textarea:focus { outline: 2px solid var(--accent-on-deep); outline-offset: 1px; }
+.contact .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.contact .send { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.contact button.btn { border: 0; cursor: pointer; font: 600 1rem/1.2 var(--body); }
+.contact .hp { position: absolute; left: -9999px; }
+.contact .alt { color: rgba(255,255,255,0.86); }
+#cf-status { font-size: 0.9375rem; }
+.small { color: rgba(255,255,255,0.6); font-size: 0.8125rem; padding-top: 18px; }
+
+@media (max-width: 1000px) and (min-width: 761px) {
+  .facts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .inner { padding-inline: 20px; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 24px 40px; }
+  .hero img { width: 120px; height: 120px; order: -1; }
+  .facts dl { grid-template-columns: minmax(0, 1fr); }
+  .facts div { padding: 14px 0; }
+  .facts div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .sec, .foot .inner { grid-template-columns: minmax(0, 1fr); padding-block: 36px; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .services li:nth-child(2) { border-top: 1px solid var(--line); padding-top: 11px; }
+  .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .job { grid-template-columns: minmax(0, 1fr); }
+  .contact .two { grid-template-columns: minmax(0, 1fr); }
+}
 </style>
-<script>
-setInterval(function(){var t=document.querySelector('p');if(!t)return;var r=t.getBoundingClientRect(),s=document.createElement('span');s.className='s';s.textContent='\u2726';s.style.left=r.left+Math.random()*r.width+'px';s.style.top=r.top+Math.random()*r.height+'px';document.body.appendChild(s);setTimeout(function(){s.remove()},1000)},120);
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ari Cohen",
+  "url": "https://aricohen.ca",
+  "image": "https://aricohen.ca/images/ari.jpg",
+  "jobTitle": "Confectionery and gummy consultant",
+  "description": "Confectionery and gummy consultant in Toronto. Gelatin and pectin gummy and soft chew formulation for the cannabis and supplement industries.",
+  "email": "mailto:ari@goodgoodnotbad.ca",
+  "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
+  "worksFor": { "@type": "Organization", "name": "GoodGoodNotBad Consulting Inc." },
+  "knowsAbout": ["Gummy formulation", "High-load gummies", "Soft chew formulation", "Supplement gummies", "Confectionery", "Gelatin", "Pectin", "Cannabis edibles"],
+  "sameAs": ["https://www.instagram.com/arimakesgummies/", "https://www.linkedin.com/in/ari-cohen-a8137023/"]
+}
 </script>
-<p>CARR IS GAY</p>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="bar">
+      <span class="site">aricohen.ca</span>
+      <a class="member" href="https://thegummywizard.com">Member login</a>
+    </div>
+    <div class="hero">
+      <div>
+        <h1>Ari Cohen</h1>
+        <p class="role">Confectionery and gummy consultant</p>
+        <p class="lede">I formulate gummies and soft chews for producers of every size. Based in Toronto, working on-site and remotely.</p>
+        <p class="cta">
+          <a class="btn" href="#contact">Contact</a>
+          <a href="https://www.linkedin.com/in/ari-cohen-a8137023/">LinkedIn</a>
+          <a href="https://www.instagram.com/arimakesgummies/">Instagram</a>
+        </p>
+      </div>
+      <img src="images/ari.jpg" width="480" height="480" alt="Ari Cohen eating a gummy">
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <dl class="inner">
+    <div><dt>15 years</dt><dd>making gummies</dd></div>
+    <div><dt>25+ clients</dt><dd>in Canada, the United States and Europe</dd></div>
+    <div><dt>Cannabis and supplements</dt><dd>and anything else that goes in a gummy</dd></div>
+    <div><dt>Gelatin and pectin</dt><dd>gummies and soft chews</dd></div>
+  </dl>
+</div>
+
+<main class="inner">
+  <section class="sec" id="high-load">
+    <h2>Gummy formulation</h2>
+    <div class="body">
+      <p>I build and optimize gelatin and pectin systems for gummies and soft chews. I focus on every aspect of gummy construction, including flavour, acid, buffering, masking, pH, water activity, appearance, shelf appeal, and stability.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="services">
+    <h2>What I do</h2>
+    <ul class="services">
+      <li>Formulation development and optimization</li>
+      <li>Hydrocolloid selection: gelatin, pectin, agar</li>
+      <li>Flavour development, acid and buffering systems</li>
+      <li>Reformulations for natural colours and flavours</li>
+      <li>Process troubleshooting and quality improvement</li>
+      <li>Ingredient and vendor sourcing</li>
+      <li>Room setup: equipment, ingredients, flavours</li>
+      <li>Training, in person or remote</li>
+      <li>Cannabis edibles</li>
+      <li>Gummy formulations for sale</li>
+    </ul>
+  </section>
+
+  <section class="sec" id="experience">
+    <h2>What I've done</h2>
+    <div class="body">
+      <p>I've been making gummies for 15 years and have worked with 25+ clients across cannabis and supplements in Canada, the United States and Europe.</p>
+      <div class="job">
+        <h3>Founder and Principal Consultant, GoodGoodNotBad Consulting Inc.</h3>
+        <span class="when">2024 to present</span>
+        <p>Toronto</p>
+        <p>Formulation, process and training work for gummy and soft chew producers in the cannabis and supplement industries. On-site and remote.</p>
+      </div>
+      <div class="job">
+        <h3>Co-founder and Chief Gummy Officer, Fritz's Cannabis Company</h3>
+        <span class="when">2015 to 2025</span>
+        <p>Toronto</p>
+        <p>Founded in 2015 in the legacy market. Moved to the legal market in 2019. Formulated and commercialized the first hash rosin gummy on the Canadian regulated market.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="work">
+    <h2>Some of the work</h2>
+    <div class="photos">
+      <figure>
+        <img src="images/marbled.jpg" width="900" height="1200" alt="Rows of sanded round gummies marbled in red, yellow and white">
+      </figure>
+      <figure>
+        <img src="images/galaxy.jpg" width="990" height="1200" alt="A clear dark red and purple square gummy on a blue glove">
+      </figure>
+      <figure>
+        <img src="images/triangle3.jpg" width="1050" height="1050" loading="lazy" alt="A bright green triangular gummy held up to the light between two gloved fingers">
+      </figure>
+      <figure>
+        <img src="images/blue.jpg" width="920" height="1200" loading="lazy" alt="Blue sanded gummy cubes in a glass jar">
+      </figure>
+      <figure>
+        <img src="images/pour.jpg" width="1039" height="1200" loading="lazy" style="object-position:50% 30%" alt="Hot gummy syrup being poured from a pot onto silicone moulds">
+      </figure>
+      <figure>
+        <img src="images/redmoulds.jpg" width="934" height="1200" loading="lazy" style="object-position:50% 80%" alt="Red gummies set in triangle-shaped silicone moulds">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec" id="tools" style="border-bottom:0">
+    <h2>Free Brix Calculator</h2>
+    <div class="body">
+      <div class="tool">
+        <a href="https://brixcalculator.netlify.app">Open the calculator</a>
+        <p>Enter a recipe and the Brix you want at deposit, and get the batch weight to cook down to.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="inner">
+    <h2>Contact</h2>
+    <div class="contact">
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <div class="two">
+          <label for="cf-name">Name<input id="cf-name" name="name" type="text" autocomplete="name" required></label>
+          <label for="cf-email">Your email<input id="cf-email" name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label for="cf-subject">Subject<input id="cf-subject" name="subject" type="text" required></label>
+        <label for="cf-message">Message<textarea id="cf-message" name="message" rows="5" required></textarea></label>
+        <div class="send">
+          <button type="submit" class="btn" id="cf-send">Send message</button>
+          <span id="cf-status" role="status"></span>
+        </div>
+      </form>
+      <p class="alt">Or email <a href="mailto:ari@goodgoodnotbad.ca">ari@goodgoodnotbad.ca</a></p>
+      <p class="alt"><a href="https://www.linkedin.com/in/ari-cohen-a8137023/">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/arimakesgummies/">@arimakesgummies on Instagram</a></p>
+      <p class="small">Ari Cohen, GoodGoodNotBad Consulting Inc., Toronto</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('cf-status');
+  var btn = document.getElementById('cf-send');
+  var live = /(^|\.)aricohen\.ca$|\.netlify\.app$/.test(location.hostname);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!live) { status.textContent = 'This form sends once the site is live. For now, use the email address below.'; return; }
+    btn.disabled = true; status.textContent = 'Sending...';
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.textContent = 'Message sent. I will get back to you.'; })
+      .catch(function () { status.textContent = 'That did not send. Please email ari@goodgoodnotbad.ca instead.'; })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>
