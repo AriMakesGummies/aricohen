@@ -78,9 +78,11 @@ h2::before { content: ""; display: block; width: 36px; height: 4px; background: 
 .wide { max-width: none; }
 .intro { max-width: 40rem; padding-bottom: 10px; }
 
-.services { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; max-width: none; }
-.services li { padding: 11px 0; border-top: 1px solid var(--line); }
-.services li:nth-child(-n+2) { border-top: 0; padding-top: 0; }
+.svc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 40px; }
+.svc .grp:first-child { grid-row: span 3; }
+.svc h3 { font: 700 1.3rem/1.15 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .03em; color: var(--accent); margin: 0 0 6px; }
+.svc ul { list-style: none; margin: 0; padding: 0; max-width: none; }
+.svc li { padding: 10px 0; border-top: 1px solid var(--line); }
 
 .job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 24px; padding-top: 14px; border-top: 1px solid var(--line); }
 .job:first-child { border-top: 0; padding-top: 0; }
@@ -160,8 +162,8 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
   .facts div { padding: 14px 0; }
   .facts div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
   .sec, .foot .inner { grid-template-columns: minmax(0, 1fr); padding-block: 36px; }
-  .services { grid-template-columns: minmax(0, 1fr); }
-  .services li:nth-child(2) { border-top: 1px solid var(--line); padding-top: 11px; }
+  .svc { grid-template-columns: minmax(0, 1fr); }
+  .svc .grp:first-child { grid-row: auto; }
   .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .job { grid-template-columns: minmax(0, 1fr); }
   .contact .two { grid-template-columns: minmax(0, 1fr); }
@@ -196,7 +198,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
       <div>
         <h1>Ari Cohen</h1>
         <p class="role">Confectionery and gummy consultant</p>
-        <p class="lede">I formulate gummies and soft chews for producers of every size.</p>
+        <p class="lede">Gummy formulation and optimization, from concept to commercialization.</p>
         <p class="cta">
           <a class="btn" href="#contact">Contact</a>
           <a href="https://www.linkedin.com/in/ari-cohen-a8137023/">LinkedIn</a>
@@ -222,25 +224,33 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
     <h2>What I do</h2>
     <div class="body wide">
       <p class="intro">I build and optimize gelatin and pectin systems for gummies and soft chews. I focus on every aspect of gummy construction, including flavour, acid, buffering, masking, pH, water activity, appearance, shelf appeal, and stability.</p>
-    <ul class="services">
-      <li>High-load gummies: creatine, collagen and other heavy actives</li>
-      <li>Cannabis edibles: cannabinoid selection, ratios and input types</li>
-      <li>Full-sugar, reduced-sugar and sugar-free gummies: syrups, polyols, fibres and sweeteners</li>
-      <li>Formulation development and optimization</li>
-      <li>Hydrocolloid selection: gelatin, pectin, agar</li>
-      <li>Flavour development, acid and buffering systems</li>
-      <li>Reformulations for natural colours and flavours</li>
-      <li>Process troubleshooting and quality improvement</li>
-      <li>Ingredient and vendor sourcing</li>
-      <li>Room setup: equipment, ingredients, flavours</li>
-      <li>Training, in person or remote</li>
-      <li>Gummy formulations for sale</li>
-    </ul>
+    <div class="svc">
+      <div class="grp"><h3>New product development</h3><ul>
+        <li>Formulation development and optimization</li>
+        <li>Hydrocolloid selection: gelatin, pectin, agar</li>
+        <li>Flavour development, acid and buffering systems</li>
+        <li>High-load gummies: creatine, collagen and other heavy actives</li>
+        <li>Cannabis edibles: cannabinoid selection, ratios and input types</li>
+        <li>Full-sugar, reduced-sugar and sugar-free gummies: syrups, polyols, fibres and sweeteners</li>
+      </ul></div>
+      <div class="grp"><h3>Fixing existing products</h3><ul>
+        <li>Process troubleshooting and quality improvement</li>
+        <li>Reformulations for natural colours and flavours</li>
+      </ul></div>
+      <div class="grp"><h3>Production setup</h3><ul>
+        <li>Room setup: equipment, ingredients, flavours</li>
+        <li>Ingredient and vendor sourcing</li>
+      </ul></div>
+      <div class="grp"><h3>Training and recipes</h3><ul>
+        <li>Training, in person or remote</li>
+        <li>Gummy formulations for sale</li>
+      </ul></div>
+    </div>
     </div>
   </section>
 
   <section class="sec" id="experience">
-    <h2>What I've done</h2>
+    <h2>Experience</h2>
     <div class="body">
       <div class="job">
         <h3>Founder and Principal Consultant, GoodGoodNotBad Consulting Inc.</h3>
