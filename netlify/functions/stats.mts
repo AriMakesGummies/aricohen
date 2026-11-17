@@ -8,15 +8,15 @@ export default async (req: Request, _context: Context) => {
   if (!secret || given !== secret) return new Response("Not found", { status: 404 });
 
   const store = getStore({ name: "visits", consistency: "strong" });
-  const { directories } = await store.list({ directories: true });
-  const days = [...directories].sort().reverse();
-  const rows: Array<[string, number]> = [];
-  let total = 0;
-  for (const day of days) {
-    const { blobs } = await store.list({ prefix: `${day}/` });
-    rows.push([day, blobs.length]);
-    total += blobs.length;
+  const { blobs } = await store.list();
+  const byDay = new Map<string, number>();
+  for (const b of blobs) {
+    const day = b.key.split("/")[0];
+    byDay.set(day, (byDay.get(day) ?? 0) + 1);
   }
+  const rows: Array<[string, number]> = [...byDay.entries()].sort((x, y) => (x[0] < y[0] ? 1 : -1));
+  const total = blobs.length;
+  console.log("stats: entries", total);
   const today = new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Toronto", year: "numeric", month: "2-digit", day: "2-digit",
   }).format(new Date());

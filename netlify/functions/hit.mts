@@ -6,12 +6,13 @@ const BOT = /bot|crawl|spider|slurp|preview|monitor|headless|lighthouse|facebook
 
 export default async (req: Request, _context: Context) => {
   const ua = req.headers.get("user-agent") || "";
-  if (!ua || BOT.test(ua)) return new Response(null, { status: 204 });
+  if (!ua || BOT.test(ua)) { console.log("hit: skipped", ua); return new Response(null, { status: 204 }); }
   const day = new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Toronto", year: "numeric", month: "2-digit", day: "2-digit",
   }).format(new Date());
   const key = `${day}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   await getStore("visits").set(key, "1");
+  console.log("hit: saved", key);
   return new Response(null, { status: 204 });
 };
 
