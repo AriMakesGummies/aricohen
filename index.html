@@ -7,7 +7,7 @@
 <meta name="description" content="Ari Cohen is a confectionery and gummy consultant in Toronto. Gelatin and pectin gummy and soft chew formulation for the cannabis and supplement industries, on-site and remote.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=Chewy&display=swap">
 <style>
 /* Layout: deep green header band, white body in a label-left / content-right grid, grey-green bands for facts and footer. Single light look by choice. */
 :root {
@@ -85,6 +85,33 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
 
 .tool { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 18px 20px; display: grid; gap: 6px; }
 .tool a { font-weight: 600; color: var(--accent); }
+
+/* Gummy name */
+.namelink { grid-column: 1 / -1; text-align: center; padding-top: 12px; font-size: 0.875rem; }
+.namelink button { background: none; border: 0; padding: 4px; font: inherit; color: var(--accent-on-deep); text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer; }
+.namelink button:hover { color: #fff; }
+.gn { position: fixed; inset: 0; z-index: 50; background: rgba(8, 20, 15, 0.72); display: grid; place-items: center; padding: 16px; overflow: auto; }
+.gn[hidden] { display: none; }
+.gn .panel { background: var(--paper); color: var(--ink); border-radius: 10px; width: 100%; max-width: 28rem; padding: 30px 24px 24px; position: relative; }
+.gn .x { position: absolute; top: 8px; right: 10px; background: none; border: 0; font-size: 1.6rem; line-height: 1; color: var(--mute); cursor: pointer; padding: 6px 8px; }
+.gn form, .gn .out { display: grid; gap: 16px; }
+.gn form[hidden], .gn .out[hidden] { display: none; }
+.gn h2 { font-size: 1.75rem; }
+.gn h2::before { display: none; }
+.gn label { display: grid; gap: 6px; font-size: 0.9375rem; color: var(--mute); }
+.gn input, .gn select { font: inherit; font-size: 1.125rem; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 11px 12px; width: 100%; }
+.gn input { text-transform: uppercase; }
+.gn input:focus, .gn select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.gn .go { justify-self: start; background: var(--accent); color: #fff; border: 0; border-radius: 4px; padding: 11px 20px; font: 600 1rem/1.2 var(--body); cursor: pointer; }
+.gn .go:hover { background: var(--deep); }
+.gn .ghost { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 4px; padding: 11px 20px; font: 600 1rem/1.2 var(--body); cursor: pointer; }
+.gn .err { color: #b3261e; font-size: 0.9375rem; min-height: 1.4em; }
+.gn .lead { color: var(--mute); text-align: center; }
+.gn .name { font: 400 clamp(2.4rem, 11vw, 3.6rem)/1.08 "Chewy", "Comic Sans MS", "Arial Rounded MT Bold", sans-serif; color: #d6336c; text-align: center; text-wrap: balance; padding: 6px 0 10px; overflow-wrap: anywhere; }
+.gn .bear { width: 92px; height: 115px; justify-self: center; animation: jiggle 0.7s ease-in-out infinite; }
+@keyframes jiggle { 0%, 100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(-5px) rotate(-4deg); } 75% { transform: translateX(5px) rotate(4deg); } }
+@media (prefers-reduced-motion: reduce) { .gn .bear { animation: none; } }
+.gn .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 
 /* Footer band */
 .foot { background: var(--deep); color: #fff; }
@@ -277,6 +304,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
       <p class="alt"><a href="https://www.linkedin.com/in/ari-cohen-a8137023/">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/arimakesgummies/">@arimakesgummies on Instagram</a></p>
       <p class="small">Ari Cohen, GoodGoodNotBad Consulting Inc., Toronto</p>
     </div>
+    <p class="namelink"><button type="button" id="gn-open">Click here for your gummy name</button></p>
   </div>
 </footer>
 
@@ -295,6 +323,100 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
       .catch(function () { status.textContent = 'That did not send. Please email ari@goodgoodnotbad.ca instead.'; })
       .then(function () { btn.disabled = false; });
   });
+})();
+</script>
+
+<div class="gn" id="gn" hidden role="dialog" aria-modal="true" aria-labelledby="gn-title">
+  <div class="panel">
+    <button type="button" class="x" id="gn-x" aria-label="Close">&times;</button>
+    <form id="gn-form" autocomplete="off">
+      <h2 id="gn-title">Your gummy name</h2>
+      <label for="gn-initial">First letter of your first name<input id="gn-initial" type="text" maxlength="1" inputmode="text" autocapitalize="characters"></label>
+      <label for="gn-month">Month you were born
+        <select id="gn-month">
+          <option value="">Choose a month</option>
+          <option value="0">January</option><option value="1">February</option><option value="2">March</option><option value="3">April</option>
+          <option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option>
+          <option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option>
+        </select>
+      </label>
+      <span class="err" id="gn-err" role="alert"></span>
+      <button type="submit" class="go">Get my gummy name</button>
+    </form>
+    <div class="out" id="gn-out" hidden>
+      <p class="lead">Your gummy name is</p>
+      <p class="name" id="gn-name"></p>
+      <svg class="bear" viewBox="0 0 64 80" aria-hidden="true">
+        <defs><linearGradient id="gn-grad" x1="0" y1="0" x2="0" y2="1"></linearGradient></defs>
+        <g fill="url(#gn-grad)">
+          <circle cx="18" cy="11" r="7.5"/><circle cx="46" cy="11" r="7.5"/>
+          <ellipse cx="11" cy="42" rx="7.5" ry="10" transform="rotate(28 11 42)"/><ellipse cx="53" cy="42" rx="7.5" ry="10" transform="rotate(-28 53 42)"/>
+          <ellipse cx="21" cy="70" rx="9.5" ry="8"/><ellipse cx="43" cy="70" rx="9.5" ry="8"/>
+          <ellipse cx="32" cy="50" rx="18" ry="20"/>
+          <circle cx="32" cy="23" r="16.5"/>
+        </g>
+        <ellipse cx="32" cy="52" rx="9" ry="11" fill="#fff" opacity="0.2"/>
+        <ellipse cx="32" cy="28" rx="7" ry="5.5" fill="#fff" opacity="0.3"/>
+        <circle cx="25.5" cy="20" r="2" fill="#16201b"/><circle cx="38.5" cy="20" r="2" fill="#16201b"/>
+        <ellipse cx="32" cy="26" rx="2.4" ry="1.7" fill="#16201b"/>
+        <path d="M21 13 q4 -5 10 -4" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.55"/>
+      </svg>
+      <div class="row">
+        <button type="button" class="go" id="gn-again">Try another</button>
+        <button type="button" class="ghost" id="gn-close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var FIRST = {
+    A: 'Big Tasty', B: 'Guyute', C: 'The Notorious', D: 'Fizzy', E: 'Blue Razz', F: 'Lucky Cat', G: 'Melted',
+    H: 'Boom Boom', I: 'Dr.', J: 'Squishy', K: 'Admiral', L: 'Tangy', M: 'Big', N: 'Jiggly', O: 'Venus de',
+    P: 'The Honourable and Esteemed', Q: 'Slurm', R: "Lil'", S: 'Gooey', T: 'Brix', U: 'Jerry', V: 'Super Sour',
+    W: 'Fuzzy', X: 'Sticky', Y: 'Bouncy', Z: 'Vegan'
+  };
+  var LAST = ['Von Pectin', 'Pawface', 'Bouncington', 'Goopenheimer', 'Squishman', 'Wobblebottom',
+              'Chewsworth', 'McBrix', 'Stickylips', 'Decarbo', 'Clusterbuster', 'Terpsmith'];
+  var COLOURS = ['#ff4d6d', '#ff922b', '#ffd43b', '#51cf66', '#22b8cf', '#4c6ef5', '#cc5de8', '#f06595', '#20c997', '#fa5252'];
+  function pick(not) { var c; do { c = COLOURS[Math.floor(Math.random() * COLOURS.length)]; } while (not && not.indexOf(c) !== -1); return c; }
+  function paintBear() {
+    var g = document.getElementById('gn-grad'), a = pick(), b = pick([a]), c = pick([a, b]);
+    var mode = Math.floor(Math.random() * 3), stops;
+    g.removeAttribute('gradientTransform'); g.setAttribute('spreadMethod', 'pad'); g.setAttribute('x2', '0'); g.setAttribute('y2', '1');
+    if (mode === 0) stops = [[0, a], [1, b]];
+    else if (mode === 1) stops = [[0, a], [0.5, b], [1, c]];
+    else {
+      stops = [[0, a], [0.5, a], [0.5, b], [1, b]];
+      g.setAttribute('y2', '0.22'); g.setAttribute('spreadMethod', 'repeat');
+      g.setAttribute('gradientTransform', 'rotate(' + (Math.random() < 0.5 ? 25 : -25) + ' 0.5 0.5)');
+    }
+    while (g.firstChild) g.removeChild(g.firstChild);
+    stops.forEach(function (s) {
+      var el = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      el.setAttribute('offset', s[0]); el.setAttribute('stop-color', s[1]); g.appendChild(el);
+    });
+  }
+  var $ = function (id) { return document.getElementById(id); };
+  var box = $('gn'), form = $('gn-form'), out = $('gn-out'), opener = null;
+  function reset() { form.hidden = false; out.hidden = true; $('gn-err').textContent = ''; $('gn-initial').value = ''; $('gn-month').value = ''; $('gn-initial').focus(); }
+  function close() { box.hidden = true; if (opener) opener.focus(); }
+  $('gn-open').addEventListener('click', function () { opener = this; box.hidden = false; reset(); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var letter = $('gn-initial').value.trim().toUpperCase(), month = $('gn-month').value;
+    if (!FIRST[letter]) { $('gn-err').textContent = 'Enter one letter, A to Z.'; $('gn-initial').focus(); return; }
+    if (month === '') { $('gn-err').textContent = 'Choose the month you were born.'; $('gn-month').focus(); return; }
+    $('gn-name').textContent = FIRST[letter] + ' ' + LAST[+month];
+    paintBear();
+    form.hidden = true; out.hidden = false; $('gn-again').focus();
+  });
+  $('gn-again').addEventListener('click', reset);
+  $('gn-close').addEventListener('click', close);
+  $('gn-x').addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
 })();
 </script>
 
