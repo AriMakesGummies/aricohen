@@ -501,5 +501,13 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
 })();
 </script>
 
+<script>
+(function () {
+  if (!/(^|\.)aricohen\.ca$/.test(location.hostname)) return;
+  try { if (localStorage.getItem('ac-nocount') === '1') return; } catch (e) {}
+  try { fetch('/api/hit', { method: 'POST', keepalive: true }).catch(function () {}); } catch (e) {}
+})();
+</script>
+
 </body>
 </html>
