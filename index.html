@@ -319,7 +319,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
     if (!live) { status.textContent = 'This form sends once the site is live. For now, use the email address below.'; return; }
     btn.disabled = true; status.textContent = 'Sending...';
     fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.textContent = 'Message sent. I will get back to you.'; })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.textContent = 'Message sent. Thanks!'; })
       .catch(function () { status.textContent = 'That did not send. Please email ari@goodgoodnotbad.ca instead.'; })
       .then(function () { btn.disabled = false; });
   });
