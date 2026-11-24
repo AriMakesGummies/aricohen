@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gummy Consultant and Formulator | Ari Cohen, Toronto</title>
-<meta name="description" content="Gummy consultant Ari Cohen. 15 years formulating gelatin and pectin gummies and soft chews for cannabis and supplement brands in Canada, the US and Europe.">
+<meta name="description" content="Gummy consultant Ari Cohen. 15 years formulating gelatin and pectin gummies and soft chews for cannabis and supplement brands in Canada, the US, and Europe.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aricohen.ca/">
 <meta property="og:title" content="Gummy Consultant and Formulator | Ari Cohen, Toronto">
@@ -95,6 +95,17 @@ h2::before { content: ""; display: block; width: 36px; height: 4px; background: 
 .photos .triangle img { object-position: 50% 12%; }
 figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
 
+.case { padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.case:first-child { border-top: 0; padding-top: 0; }
+.case h3 { font: 600 1.0625rem/1.4 var(--body); }
+.case p b { font-weight: 600; }
+.faq { border-top: 1px solid var(--line); }
+.faq:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; font-weight: 600; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 700 1.4rem/1 var(--display); color: var(--accent); flex: none; }
+.faq[open] summary::after { content: "\2212"; }
+.faq p { color: var(--mute); padding-bottom: 16px; }
 .tool { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 18px 20px; display: grid; gap: 6px; }
 .tool a { font-weight: 600; color: var(--accent); }
 
@@ -217,7 +228,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
 <div class="facts">
   <dl class="inner">
     <div><dt>15 years</dt><dd>making gummies</dd></div>
-    <div><dt>25+ clients</dt><dd>in Canada, the United States and Europe</dd></div>
+    <div><dt>25+ clients</dt><dd>in Canada, the United States, and Europe</dd></div>
     <div><dt>Cannabis and supplements</dt><dd>and anything else that goes in a gummy</dd></div>
     <div><dt>Gelatin and pectin</dt><dd>gummies and soft chews</dd></div>
   </dl>
@@ -234,8 +245,8 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
         <li>Hydrocolloid selection: gelatin, pectin, agar</li>
         <li>Flavour development, acid and buffering systems</li>
         <li>High-load gummies: creatine, collagen, and other high-dose actives</li>
-        <li>Cannabis edibles: cannabinoid selection, ratios and input types</li>
-        <li>Full-sugar, reduced-sugar and sugar-free gummies: syrups, polyols, fibres and sweeteners</li>
+        <li>Cannabis edibles: cannabinoid selection, ratios, and input types</li>
+        <li>Full-sugar, reduced-sugar, and sugar-free gummies: syrups, polyols, fibres, and sweeteners</li>
       </ul></div>
       <div class="grp"><h3>Fixing existing products</h3><ul>
         <li>Process troubleshooting and quality improvement</li>
@@ -271,6 +282,30 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
     </div>
   </section>
 
+  <section class="sec" id="done">
+    <h2>What I've done</h2>
+    <div class="body">
+      <div class="case">
+        <h3>High-load supplement gummies</h3>
+        <p><b>Problem:</b> A supplement brand wanted gummies with high concentrations of creatine, collagen, and fibre. Conventional high-methoxyl pectin requires acidic conditions to set, and creatine degrades in acid, making it difficult to maintain the stated potency throughout the product’s shelf life.</p>
+        <p><b>What I did:</b> Developed the formulations using low-methoxyl pectin, which allows the gummies to set at a higher pH, helping preserve creatine stability and maintain label accuracy.</p>
+        <p><b>Result:</b> Market-ready, high-load gummies that met their stated label claims in potency testing.</p>
+      </div>
+      <div class="case">
+        <h3>Building a cannabis gummy line from scratch</h3>
+        <p><b>Problem:</b> A cannabis producer had an empty room, a product they wanted on the market, and four to six months to get there.</p>
+        <p><b>What I did:</b> Sourced the equipment and ingredients, designed the room layout and workflow, wrote the SOPs, developed the gummy formulations, flavours, and cannabinoid ratios, trained the staff, and advised on packaging.</p>
+        <p><b>Result:</b> Four SKUs launched within four months, with a fully trained team running production.</p>
+      </div>
+      <div class="case">
+        <h3>Line audit for an established producer</h3>
+        <p><b>Problem:</b> An established producer wanted to improve product flavour and manufacturing efficiency across its existing gummy line.</p>
+        <p><b>What I did:</b> Audited flavour, formulation, and manufacturing processes across the entire product line, identifying and implementing improvements where needed.</p>
+        <p><b>Result:</b> Streamlined production and reduced production costs by 15%.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="work">
     <h2>What I've made</h2>
     <div class="photos">
@@ -295,7 +330,7 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
     </div>
   </section>
 
-  <section class="sec" id="tools" style="border-bottom:0">
+  <section class="sec" id="tools">
     <h2>Free Brix Calculator</h2>
     <div class="body">
       <div class="tool">
@@ -304,6 +339,49 @@ figcaption { font-size: 0.875rem; color: var(--mute); padding-top: 7px; }
       </div>
     </div>
   </section>
+
+  <section class="sec" id="faq" style="border-bottom:0">
+    <h2>FAQ</h2>
+    <div class="body" style="gap:0">
+      <details class="faq">
+        <summary>Do I need an existing recipe to start?</summary>
+        <p>No. I can develop one from scratch, or work from the recipe you already have.</p>
+      </details>
+      <details class="faq">
+        <summary>Who owns the formula when we’re done?</summary>
+        <p>You do. The formula is yours.</p>
+      </details>
+      <details class="faq">
+        <summary>Do you work with clients under an NDA?</summary>
+        <p>Yes. I’m happy to sign one before you share anything. It’s also why none of my clients are named on this site.</p>
+      </details>
+      <details class="faq">
+        <summary>Where do you work?</summary>
+        <p>Anywhere. I work with clients remotely, on-site, or both.</p>
+      </details>
+      <details class="faq">
+        <summary>Can you fix a product that’s already on the market?</summary>
+        <p>Yes. It’s a big part of what I do. Gummies that sweat, don’t set, melt in shipping, turn gritty, or just aren’t where they should be in terms of flavour or texture: I find what’s causing it and fix it.</p>
+      </details>
+      <details class="faq">
+        <summary>Can you help scale a recipe from the kitchen to commercial production?</summary>
+        <p>Yes. I take recipes from small test batches to full production: scaling the formula, choosing the equipment, and setting up the process to ensure consistent results from batch to batch.</p>
+      </details>
+      <details class="faq">
+        <summary>What kinds of gummies do you work with?</summary>
+        <p>Gelatin, pectin, and agar, including vegan, sugar-free, and reduced-sugar.</p>
+      </details>
+      <details class="faq">
+        <summary>Do you work with cannabis and THC?</summary>
+        <p>Yes. I was making cannabis gummies for many years before they were regulated in Canada, and brought the first hash rosin gummy to the Canadian legal market.</p>
+      </details>
+      <details class="faq">
+        <summary>How long does a project usually take?</summary>
+        <p>It depends on the scope. Fixing an existing product usually takes a few weeks. Developing a new one usually takes a few months.</p>
+      </details>
+    </div>
+  </section>
+
 </main>
 
 <footer class="foot" id="contact">
